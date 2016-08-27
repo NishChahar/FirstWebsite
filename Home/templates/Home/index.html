@@ -1,51 +1,15 @@
-<!-- Loads path to your static files -->
-{% load staticfiles %}
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-<link rel="stylesheet" type="text/css" href="{% static 'Home/style.css' %}" />
-<link href="https://fonts.googleapis.com/css?family=Baloo+Chettan" rel="stylesheet">
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+{% extends 'Home/base.html' %}
 
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-
-        <!-- Header -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{% url 'Home:index' %}">Sound Box</a>
-        </div>
-
-        <!-- Items -->
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar nav">
-                <li class="active">
-                    <a href="{% url 'Home:index' %}">
-                        <span class="glyphicon glyphicon-cd" aria-hidden="true"></span>
-                        Albums
-                    </a>
-                </li>
-                <li class="">
-                    <a href="{% url 'Home:index' %}">
-                        <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>
-                        Songs
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-{% if all_albums %}
-    <h2>Here are all your Albums:</h2>
-    <ol>
-        {% for album in all_albums %}
-            <li><a href="{% url 'Home:detail' album.id %}">{{ album.album_title }}</a> </li>
-        {% endfor %}
-    </ol>
-{% else %}
-    <h3>You don't have any albums</h3>
-{% endif %}
+{% block title %}Sound Box{% endblock %}
+{% block body %}
+    {% if object_list %}
+        <h2>Here are all your Albums:</h2>
+        <ol>
+            {% for album in object_list %}
+                <li><a href="{% url 'Home:detail' album.id %}">{{ album.album_title }}</a> </li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <h3>You don't have any albums</h3>
+    {% endif %}
+{% endblock %}

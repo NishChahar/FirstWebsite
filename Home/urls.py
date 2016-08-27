@@ -4,12 +4,7 @@ from . import views
 app_name = 'Home'
 
 urlpatterns = [
-    #/Home/
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
 
-    #/Home/123(id)
-    url(r'^(?P<album_id>[0-9]+)/$', views.detail, name='detail'),
-
-    #/Home/Favorite
-    url(r'^(?P<album_id>[0-9]+)/favorite/$', views.favorite, name='favorite')
 ]

@@ -1,3 +1,14 @@
 body{
     background: white url("images/backgroung.jpg");
 }
+
+.navbar{
+    border-radius: 0;
+    background-color: beige;
+    outline: beige;
+}
+
+.navbar-brand{
+    font-family: "Satisfy", cursive;
+}
+
