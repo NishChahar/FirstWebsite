@@ -1,5 +1,5 @@
 body{
-    background: white url("images/backgroung.jpg");
+    background: black url("images/background1.jpg");
 }
 
 .navbar{
@@ -12,3 +12,7 @@ body{
     font-family: "Satisfy", cursive;
 }
 
+.col-sm-12{
+    font-family: "Satisfy", cursive;
+    color: darkred;
+}
